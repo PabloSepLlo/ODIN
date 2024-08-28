@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, papel o tijera</title>
+</head>
+<body>
+    <h1>Juego del piedra, papel o tijera</h1>
+    <button onclick = "jugar()">Jugar</button>
+    <script>
+        function eleccion_ordenador() {
+            const choices = ["Piedra", "Papel", "Tijera"];
+            const randomIndex = Math.floor(Math.random() * choices.length); // Genera un índice aleatorio entre 0 y 2
+            return choices[randomIndex];
+        }
+        
+        function eleccion_jugador() {
+            const jugada_jugador = prompt("Escoge una jugada: ");
+            return jugada_jugador;
+        }
+        
+        function evaluacion_resultado(jugador, ordenador) {
+            jugada_jugador = jugador.toLowerCase()
+            jugada_ordenador = ordenador.toLowerCase()
+            if (jugada_jugador === jugada_ordenador) {
+                return "Es un empate";
+            }
+            else if (
+                (jugada_jugador === "piedra" && jugada_ordenador === "tijera") ||
+                (jugada_jugador === "papel" && jugada_ordenador === "piedra") ||
+                (jugada_jugador === "tijera" && jugada_ordenador === "papel")
+            ) {
+                return "El jugador ha ganado";
+            }
+            else {
+                return "El ordenador ha ganado";
+            }
+        }
+        
+        function jugar (){
+            const eleccion_del_jugador = eleccion_jugador();
+            const eleccion_del_ordenador = eleccion_ordenador();
+            const result = evaluacion_resultado(eleccion_del_jugador, eleccion_del_ordenador);
+            console.log("El ordenador eligio: " + eleccion_del_ordenador + "\n" + result);
+        }
+    </script>
+</body>
+</html>
