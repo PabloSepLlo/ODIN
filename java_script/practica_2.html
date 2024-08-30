@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <button onclick = "operar()">Opera</button>
+    <script>
+        function suma(a, b) {
+            return a + b;
+        }
+        function resta(a, b) {
+            return a - b;
+        }
+        function multiplicacion(a, b) {
+            return a * b;
+        }
+        function division(a, b) {
+            let resultado = null;
+            if ((b === 0) || 
+            (b === 0 && a === 0)) {
+                resultado = "La division no se puede realizar";
+            }
+            else {
+                resultado = a / b;
+            }
+            return resultado;
+        }
+        function operar() {
+            const operador = prompt("Elige que operacion va a realizar: ");
+            const a = parseFloat(prompt("Elige el primer numero a operar: "));
+            const b = parseFloat(prompt("Elige el segundo numero a operar: "));
+            let resultado = null;
+            switch (operador) {
+                case '+':
+                    resultado = suma(a, b);
+                    break;
+                case '-':
+                    resultado = resta(a, b);
+                    break;
+                case '*':
+                    resultado = multiplicacion(a, b);
+                    break;
+                case '/':
+                    resultado = division(a, b);
+                    break;
+                default:
+                    resultado = "operador no valido";
+            }
+            if (typeof resultado === "number") {
+                resultado = resultado.toFixed(2);
+            }
+            console.log("El resultado de la operacion de " + operador + " es: " + resultado);
+        }
+
+    </script>
+</body>
+</html>
